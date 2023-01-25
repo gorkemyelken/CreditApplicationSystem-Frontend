@@ -1,6 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
-import { Image, Button, Label } from "semantic-ui-react";
+import { Image } from "semantic-ui-react";
 import definex from "../../images/definex.png";
 import "./Home.css";
 
