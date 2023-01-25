@@ -8,4 +8,8 @@ export default class CustomerService {
   add(values) {
     return axios.post("http://localhost:8080/customers", values);
   }
+
+  delete(customerId){
+    return axios.delete("http://localhost:8080/customers/"+ customerId);
+  }
 }

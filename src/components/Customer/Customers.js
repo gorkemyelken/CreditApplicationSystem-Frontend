@@ -8,6 +8,7 @@ import {
   Modal,
   Button,
   Table,
+  Icon
 } from "semantic-ui-react";
 import { useFormik } from "formik";
 import * as yup from "yup";
@@ -26,7 +27,6 @@ function exampleReducer(state, action) {
 }
 
 export default function Customers() {
-
   const validationSchema = yup.object().shape({
     firstName: yup.string().required("Required field."),
   });
@@ -34,7 +34,7 @@ export default function Customers() {
   const { handleSubmit, handleChange, values, errors, touched, handleBlur } =
     useFormik({
       initialValues: {
-        ıdentityNumber: "",
+        identityNumber: "",
         firstName: "",
         lastName: "",
         monthlyIncome: "",
@@ -45,7 +45,7 @@ export default function Customers() {
         console.log(values);
         customerService.add(values);
         resetForm();
-        dispatch({ type: 'CLOSE_MODAL' });
+        dispatch({ type: "CLOSE_MODAL" });
         window.location.reload(false);
       },
       validationSchema,
@@ -66,14 +66,20 @@ export default function Customers() {
       .then((result) => setCustomers(result.data.data));
   }, []);
 
+  const handleDelete = (customerId) => {
+    customerService.delete(customerId);
+    window.location.reload(false);
+  };
+
   return (
     <div>
       <Button
+      floated="left"
         color="blue"
         size="huge"
         className="addCustomer"
         onClick={() => dispatch({ type: "OPEN_MODAL", dimmer: "blurring" })}
-      >
+      ><Icon name='plus' />
         Add New Customer
       </Button>
 
@@ -166,9 +172,9 @@ export default function Customers() {
                       {errors.birthDate}
                     </Label>
                   )}
-                    <Button type="submit" className="addCustomer" positive>
-                      Submit
-                    </Button>
+                  <Button type="submit" className="addCustomer" positive>
+                    Submit
+                  </Button>
                 </Form>
               </Grid.Column>
             </Grid.Row>
@@ -201,8 +207,8 @@ export default function Customers() {
               <Table.Cell>{customer.creditScore}</Table.Cell>
               <Table.Cell>
                 <Button>Apply For Credit</Button>
-                <Button>Apply For Credit</Button>
-                <Button>Apply For Credit</Button>
+                <Button>Update</Button>
+                <Button onClick={() => handleDelete(customer.customerId)}>Delete</Button>
               </Table.Cell>
             </Table.Row>
           ))}

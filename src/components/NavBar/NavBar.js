@@ -20,8 +20,8 @@ function NavBar() {
           />
           <Menu.Item
             as={NavLink}
-            to="/creditapplication"
-            content="Credit Application"
+            to="/creditapplications"
+            content="Credit Applications"
             icon="credit card"
           />
         </Container>
