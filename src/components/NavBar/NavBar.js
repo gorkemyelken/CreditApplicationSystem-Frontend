@@ -6,7 +6,7 @@ import "./Navbar.css"
 function NavBar() {
   return (
     <div>
-      <Menu borderless inverted fixed='top' className='navbar'>
+      <Menu borderless inverted className='navbar'>
         <Container className="navbar">
           <Menu.Item as={NavLink} 
             to="/"
