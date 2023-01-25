@@ -4,6 +4,7 @@ import Home from "./components/Home/Home";
 import NavBar from "./components/NavBar/NavBar";
 import 'semantic-ui-css/semantic.min.css'
 import Customers from "./components/Customer/Customers";
+import CreditApplications from "./components/Credit Application/CreditApplications";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Home />}></Route>
           <Route exact path="/customers" element={<Customers />}></Route>
+          <Route exact path="/creditapplications" element={<CreditApplications />}></Route>
         </Routes>
       </BrowserRouter>
     </div>

@@ -8,7 +8,8 @@ import {
   Modal,
   Button,
   Table,
-  Icon
+  Icon,
+  Segment
 } from "semantic-ui-react";
 import { useFormik } from "formik";
 import * as yup from "yup";
@@ -73,11 +74,12 @@ export default function Customers() {
 
   return (
     <div>
+      <h1>CUSTOMERS</h1>
+      <Segment basic size="tiny" color="black" />
       <Button
       floated="left"
         color="blue"
-        size="huge"
-        className="addCustomer"
+        className="button"
         onClick={() => dispatch({ type: "OPEN_MODAL", dimmer: "blurring" })}
       ><Icon name='plus' />
         Add New Customer
@@ -181,7 +183,7 @@ export default function Customers() {
           </Grid>
         </Modal.Content>
       </Modal>
-      <Table celled>
+      <Table selectable>
         <Table.Header>
           <Table.Row>
             <Table.HeaderCell>Identity Number</Table.HeaderCell>
@@ -206,7 +208,7 @@ export default function Customers() {
               <Table.Cell>{customer.birthDate}</Table.Cell>
               <Table.Cell>{customer.creditScore}</Table.Cell>
               <Table.Cell>
-                <Button>Apply For Credit</Button>
+                <Button className="button">Apply For Credit</Button>
                 <Button>Update</Button>
                 <Button onClick={() => handleDelete(customer.customerId)}>Delete</Button>
               </Table.Cell>
