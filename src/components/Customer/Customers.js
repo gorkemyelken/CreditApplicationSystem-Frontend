@@ -9,7 +9,7 @@ import {
   Button,
   Table,
   Icon,
-  Segment
+  Segment,
 } from "semantic-ui-react";
 import { useFormik } from "formik";
 import * as yup from "yup";
@@ -29,7 +29,17 @@ function exampleReducer(state, action) {
 
 export default function Customers() {
   const validationSchema = yup.object().shape({
+    identityNumber: yup
+      .string()
+      .required("Required field.")
+      .length(11, "Identity number must be 11 character."),
     firstName: yup.string().required("Required field."),
+    lastName: yup.string().required("Required field."),
+    monthlyIncome: yup
+      .number("Monthly income must be number.")
+      .required("Required field."),
+    phoneNumber: yup.string().required("Required field."),
+    birthDate: yup.string().required("Required field."),
   });
 
   const { handleSubmit, handleChange, values, errors, touched, handleBlur } =
@@ -47,7 +57,6 @@ export default function Customers() {
         customerService.add(values);
         resetForm();
         dispatch({ type: "CLOSE_MODAL" });
-        window.location.reload(false);
       },
       validationSchema,
     });
@@ -74,14 +83,13 @@ export default function Customers() {
 
   return (
     <div>
-      <h1>CUSTOMERS</h1>
-      <Segment basic size="tiny" color="black" />
       <Button
-      floated="left"
+        floated="left"
         color="blue"
         className="button"
         onClick={() => dispatch({ type: "OPEN_MODAL", dimmer: "blurring" })}
-      ><Icon name='plus' />
+      >
+        <Icon name="plus" />
         Add New Customer
       </Button>
 
@@ -98,7 +106,7 @@ export default function Customers() {
                 <Form onSubmit={handleSubmit}>
                   <h3>Identity Number</h3>
                   <Input
-                    fluid
+                    placeholder="XXXXXXXXXXX"
                     name="identityNumber"
                     value={values.identityNumber}
                     onChange={handleChange}
@@ -111,8 +119,9 @@ export default function Customers() {
                   )}
                   <h3>First Name</h3>
                   <Input
-                    fluid
+
                     name="firstName"
+                    placeholder="Example"
                     value={values.firstName}
                     onChange={handleChange}
                     onBlur={handleBlur}
@@ -124,8 +133,7 @@ export default function Customers() {
                   )}
                   <h3>Last Name</h3>
                   <Input
-                    fluid
-                    name="lastName"
+                    placeholder="Example"
                     value={values.lastName}
                     onChange={handleChange}
                     onBlur={handleBlur}
@@ -137,7 +145,6 @@ export default function Customers() {
                   )}
                   <h3>Monthly Income</h3>
                   <Input
-                    fluid
                     name="monthlyIncome"
                     value={values.monthlyIncome}
                     onChange={handleChange}
@@ -150,8 +157,8 @@ export default function Customers() {
                   )}
                   <h3>Phone Number</h3>
                   <Input
-                    fluid
                     name="phoneNumber"
+                    placeholder="5XXXXXXXXX"
                     value={values.phoneNumber}
                     onChange={handleChange}
                     onBlur={handleBlur}
@@ -163,8 +170,8 @@ export default function Customers() {
                   )}
                   <h3>Date Of Birth</h3>
                   <Input
-                    fluid
                     name="birthDate"
+                    placeholder="YYYY-MM-DD"
                     value={values.birthDate}
                     onChange={handleChange}
                     onBlur={handleBlur}
@@ -174,6 +181,7 @@ export default function Customers() {
                       {errors.birthDate}
                     </Label>
                   )}
+                  <br/>
                   <Button type="submit" className="addCustomer" positive>
                     Submit
                   </Button>
@@ -208,9 +216,21 @@ export default function Customers() {
               <Table.Cell>{customer.birthDate}</Table.Cell>
               <Table.Cell>{customer.creditScore}</Table.Cell>
               <Table.Cell>
-                <Button className="button">Apply For Credit</Button>
-                <Button>Update</Button>
-                <Button onClick={() => handleDelete(customer.customerId)}>Delete</Button>
+                <Button color="green">
+                  <Icon loading name="spinner" />
+                  Apply For Credit
+                </Button>
+                <Button color="facebook">
+                  <Icon name="refresh" />
+                  Update
+                </Button>
+                <Button
+                  color="red"
+                  onClick={() => handleDelete(customer.customerId)}
+                >
+                  <Icon name="trash" />
+                  Delete
+                </Button>
               </Table.Cell>
             </Table.Row>
           ))}

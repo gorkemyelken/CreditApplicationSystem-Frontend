@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {
-  Grid,
+  Icon,
   Label,
   Form,
   Input,
@@ -8,11 +8,14 @@ import {
   Button,
   Table,
 } from "semantic-ui-react";
+import { NavLink } from "react-router-dom";
+import { useFormik } from "formik";
 import CreditApplicationService from "../../services/CreditApplicationService";
 import "./CreditApplications.css";
 
 export default function CreditApplications() {
   let creditApplicationService = new CreditApplicationService();
+
   const [creditApplications, setcreditApplications] = useState([]);
 
   useEffect(() => {
@@ -21,8 +24,12 @@ export default function CreditApplications() {
       .then((result) => setcreditApplications(result.data.data));
   }, []);
 
+  
+
   return (
     <div>
+      <Button className="button" color="blue" as={NavLink}
+                        to="/creditapplications/search"><Icon name="search" />Search Credit Application</Button>
       <Table selectable>
         <Table.Header>
           <Table.Row>
@@ -46,74 +53,66 @@ export default function CreditApplications() {
         </Table.Header>
 
         {creditApplications.map((creditApplication) => (
-          <Table.Body>
-            {creditApplication.confirmationInformation == "Approved." ? 
-              <Table.Row key={creditApplication.creditApplicationId}>
+          <Table.Body key={creditApplication.creditApplicationId}>
+            {creditApplication.confirmationInformation == "Approved." ? (
+              <Table.Row>
                 <Table.Cell positive>
                   {creditApplication.confirmationInformation}
                 </Table.Cell>
+                <Table.Cell positive>{creditApplication.limit}</Table.Cell>
+                <Table.Cell positive>{creditApplication.createDate}</Table.Cell>
                 <Table.Cell positive>
-                  {creditApplication.limit}
+                  {creditApplication.customer?.identityNumber}
                 </Table.Cell>
                 <Table.Cell positive>
-                  {creditApplication.createDate}
+                  {creditApplication.customer?.firstName}
                 </Table.Cell>
                 <Table.Cell positive>
-                  {creditApplication.customer.identityNumber}
+                  {creditApplication.customer?.lastName}
                 </Table.Cell>
                 <Table.Cell positive>
-                  {creditApplication.customer.firstName}
+                  {creditApplication.customerMonthlyIncome}
                 </Table.Cell>
                 <Table.Cell positive>
-                  {creditApplication.customer.lastName}
+                  {creditApplication.customer?.phoneNumber}
                 </Table.Cell>
                 <Table.Cell positive>
-                  {creditApplication.customer.monthlyIncome}
+                  {creditApplication.customer?.birthDate}
                 </Table.Cell>
                 <Table.Cell positive>
-                  {creditApplication.customer.phoneNumber}
-                </Table.Cell>
-                <Table.Cell positive>
-                  {creditApplication.customer.birthDate}
-                </Table.Cell>
-                <Table.Cell positive>
-                  {creditApplication.customer.creditScore}
+                  {creditApplication.customerCreditScore}
                 </Table.Cell>
               </Table.Row>
-             : 
-             <Table.Row key={creditApplication.creditApplicationId}>
-             <Table.Cell negative>
-               {creditApplication.confirmationInformation}
-             </Table.Cell>
-             <Table.Cell negative>
-               {creditApplication.limit}
-             </Table.Cell>
-             <Table.Cell negative>
-               {creditApplication.createDate}
-             </Table.Cell>
-             <Table.Cell negative>
-               {creditApplication.customer.identityNumber}
-             </Table.Cell>
-             <Table.Cell negative>
-               {creditApplication.customer.firstName}
-             </Table.Cell>
-             <Table.Cell negative>
-               {creditApplication.customer.lastName}
-             </Table.Cell>
-             <Table.Cell negative>
-               {creditApplication.customer.monthlyIncome}
-             </Table.Cell>
-             <Table.Cell negative>
-               {creditApplication.customer.phoneNumber}
-             </Table.Cell>
-             <Table.Cell negative>
-               {creditApplication.customer.birthDate}
-             </Table.Cell>
-             <Table.Cell negative>
-               {creditApplication.customer.creditScore}
-             </Table.Cell>
-           </Table.Row>
-            }
+            ) : (
+              <Table.Row>
+                <Table.Cell negative>
+                  {creditApplication.confirmationInformation}
+                </Table.Cell>
+                <Table.Cell negative>{creditApplication.limit}</Table.Cell>
+                <Table.Cell negative>{creditApplication.createDate}</Table.Cell>
+                <Table.Cell negative>
+                  {creditApplication.customer?.identityNumber}
+                </Table.Cell>
+                <Table.Cell negative>
+                  {creditApplication.customer?.firstName}
+                </Table.Cell>
+                <Table.Cell negative>
+                  {creditApplication.customer?.lastName}
+                </Table.Cell>
+                <Table.Cell negative>
+                  {creditApplication.customerMonthlyIncome}
+                </Table.Cell>
+                <Table.Cell negative>
+                  {creditApplication.customer?.phoneNumber}
+                </Table.Cell>
+                <Table.Cell negative>
+                  {creditApplication.customer?.birthDate}
+                </Table.Cell>
+                <Table.Cell negative>
+                  {creditApplication.customerCreditScore}
+                </Table.Cell>
+              </Table.Row>
+            )}
           </Table.Body>
         ))}
       </Table>
