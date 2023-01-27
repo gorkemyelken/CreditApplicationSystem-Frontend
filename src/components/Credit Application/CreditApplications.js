@@ -24,12 +24,17 @@ export default function CreditApplications() {
       .then((result) => setcreditApplications(result.data.data));
   }, []);
 
-  
-
   return (
     <div>
-      <Button className="button" color="blue" as={NavLink}
-                        to="/creditapplications/search"><Icon name="search" />Search Credit Application</Button>
+      <Button
+        className="button"
+        color="blue"
+        as={NavLink}
+        to="/creditapplications/search"
+      >
+        <Icon name="search" />
+        Search Credit Application
+      </Button>
       <Table selectable>
         <Table.Header>
           <Table.Row>

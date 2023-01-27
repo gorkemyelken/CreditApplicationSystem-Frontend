@@ -15,6 +15,7 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import "react-toastify/dist/ReactToastify.css";
 import "./Customers.css";
+import CreditApplicationService from "../../services/CreditApplicationService";
 
 function exampleReducer(state, action) {
   switch (action.type) {
@@ -57,6 +58,8 @@ export default function Customers() {
         customerService.add(values);
         resetForm();
         dispatch({ type: "CLOSE_MODAL" });
+        alert("Customer is added.")
+        window.location.reload(false);
       },
       validationSchema,
     });
@@ -68,6 +71,7 @@ export default function Customers() {
   const { open, dimmer } = state;
 
   let customerService = new CustomerService();
+  let creditApplicationService = new CreditApplicationService();
   const [customers, setCustomers] = useState([]);
 
   useEffect(() => {
@@ -78,7 +82,13 @@ export default function Customers() {
 
   const handleDelete = (customerId) => {
     customerService.delete(customerId);
+    alert("Customer is deleted.")
     window.location.reload(false);
+  };
+
+  const applyForCredit = (customerId,monthlyIncome,creditScore) => {
+    creditApplicationService.add(customerId,monthlyIncome,creditScore);
+    alert("Applied for credit.")
   };
 
   return (
@@ -119,7 +129,6 @@ export default function Customers() {
                   )}
                   <h3>First Name</h3>
                   <Input
-
                     name="firstName"
                     placeholder="Example"
                     value={values.firstName}
@@ -133,6 +142,7 @@ export default function Customers() {
                   )}
                   <h3>Last Name</h3>
                   <Input
+                  name="lastName"
                     placeholder="Example"
                     value={values.lastName}
                     onChange={handleChange}
@@ -181,7 +191,7 @@ export default function Customers() {
                       {errors.birthDate}
                     </Label>
                   )}
-                  <br/>
+                  <br />
                   <Button type="submit" className="addCustomer" positive>
                     Submit
                   </Button>
@@ -216,7 +226,7 @@ export default function Customers() {
               <Table.Cell>{customer.birthDate}</Table.Cell>
               <Table.Cell>{customer.creditScore}</Table.Cell>
               <Table.Cell>
-                <Button color="green">
+                <Button color="green" onClick={() => applyForCredit(customer.customerId, customer.monthlyIncome, customer.creditScore)}>
                   <Icon loading name="spinner" />
                   Apply For Credit
                 </Button>
