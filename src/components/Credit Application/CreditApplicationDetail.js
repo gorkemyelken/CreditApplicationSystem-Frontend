@@ -17,7 +17,6 @@ export default function CreditApplicationDetail() {
       birthDate: "",
     },
     onSubmit: (values, { resetForm }) => {
-      console.log(values);
       creditApplicationService
         .find(values.identityNumber, values.birthDate)
         .then((result) => setcreditApplication(result.data.data));

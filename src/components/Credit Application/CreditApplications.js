@@ -27,6 +27,7 @@ export default function CreditApplications() {
   return (
     <div>
       <Button
+      floated="left"
         className="button"
         color="blue"
         as={NavLink}

@@ -9,11 +9,12 @@ import {
   Button,
   Table,
   Icon,
-  Segment,
 } from "semantic-ui-react";
 import { useFormik } from "formik";
 import * as yup from "yup";
+import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { NavLink } from "react-router-dom";
 import "./Customers.css";
 import CreditApplicationService from "../../services/CreditApplicationService";
 
@@ -29,6 +30,43 @@ function exampleReducer(state, action) {
 }
 
 export default function Customers() {
+
+  const notifyCustomerAdded = () =>
+    toast.success("Customer successfully added!", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      
+    });
+
+    const notifyAppliedCredit = () =>
+    toast.success("Applied for credit.", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      
+    });
+
+    const notifyCustomerDeleted = () =>
+    toast.success("Customer successfully deleted!", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      
+    });
+
   const validationSchema = yup.object().shape({
     identityNumber: yup
       .string()
@@ -57,9 +95,8 @@ export default function Customers() {
         console.log(values);
         customerService.add(values);
         resetForm();
-        dispatch({ type: "CLOSE_MODAL" });
-        alert("Customer is added.")
-        window.location.reload(false);
+        dispatch({ type: "CLOSE_MODAL" });       
+        notifyCustomerAdded();
       },
       validationSchema,
     });
@@ -82,19 +119,18 @@ export default function Customers() {
 
   const handleDelete = (customerId) => {
     customerService.delete(customerId);
-    alert("Customer is deleted.")
-    window.location.reload(false);
+    notifyCustomerDeleted();
   };
 
   const applyForCredit = (customerId,monthlyIncome,creditScore) => {
     creditApplicationService.add(customerId,monthlyIncome,creditScore);
-    alert("Applied for credit.")
+    notifyAppliedCredit();
   };
 
   return (
     <div>
       <Button
-        floated="left"
+      floated="left"
         color="blue"
         className="button"
         onClick={() => dispatch({ type: "OPEN_MODAL", dimmer: "blurring" })}
@@ -102,7 +138,16 @@ export default function Customers() {
         <Icon name="plus" />
         Add New Customer
       </Button>
-
+      <Button
+      floated="left"
+        className="button"
+        color="blue"
+        as={NavLink}
+        to="/customers/search"
+      >
+        <Icon name="search" />
+        Search Customer
+      </Button>
       <Modal
         dimmer={dimmer}
         open={open}
@@ -156,6 +201,7 @@ export default function Customers() {
                   <h3>Monthly Income</h3>
                   <Input
                     name="monthlyIncome"
+                    placeholder="e.g. 7500"
                     value={values.monthlyIncome}
                     onChange={handleChange}
                     onBlur={handleBlur}
@@ -246,6 +292,17 @@ export default function Customers() {
           ))}
         </Table.Body>
       </Table>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </div>
   );
 }
