@@ -16,4 +16,12 @@ export default class CustomerService {
   getCustomerByIdentityNumber(identityNumber){
     return axios.get("http://localhost:8080/customers/findbyidentitynumber?identityNumber=" + identityNumber)
   }
+
+  getCustomer(customerId){
+    return axios.get("http://localhost:8080/customers/"+customerId)
+  }
+
+  update(id, values){
+    return axios.put("http://localhost:8080/customers/"+id, values);
+  }
 }

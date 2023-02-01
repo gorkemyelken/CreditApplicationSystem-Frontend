@@ -30,7 +30,6 @@ function exampleReducer(state, action) {
 }
 
 export default function Customers() {
-
   const notifyCustomerAdded = () =>
     toast.success("Customer successfully added!", {
       position: "top-center",
@@ -40,10 +39,9 @@ export default function Customers() {
       pauseOnHover: true,
       draggable: true,
       progress: undefined,
-      
     });
 
-    const notifyAppliedCredit = () =>
+  const notifyAppliedCredit = () =>
     toast.success("Applied for credit.", {
       position: "top-center",
       autoClose: 5000,
@@ -52,10 +50,9 @@ export default function Customers() {
       pauseOnHover: true,
       draggable: true,
       progress: undefined,
-      
     });
 
-    const notifyCustomerDeleted = () =>
+  const notifyCustomerDeleted = () =>
     toast.success("Customer successfully deleted!", {
       position: "top-center",
       autoClose: 5000,
@@ -64,7 +61,6 @@ export default function Customers() {
       pauseOnHover: true,
       draggable: true,
       progress: undefined,
-      
     });
 
   const validationSchema = yup.object().shape({
@@ -95,7 +91,7 @@ export default function Customers() {
         console.log(values);
         customerService.add(values);
         resetForm();
-        dispatch({ type: "CLOSE_MODAL" });       
+        dispatch({ type: "CLOSE_MODAL" });
         notifyCustomerAdded();
       },
       validationSchema,
@@ -122,15 +118,15 @@ export default function Customers() {
     notifyCustomerDeleted();
   };
 
-  const applyForCredit = (customerId,monthlyIncome,creditScore) => {
-    creditApplicationService.add(customerId,monthlyIncome,creditScore);
+  const applyForCredit = (customerId, monthlyIncome, creditScore) => {
+    creditApplicationService.add(customerId, monthlyIncome, creditScore);
     notifyAppliedCredit();
   };
 
   return (
     <div>
       <Button
-      floated="left"
+        floated="left"
         color="blue"
         className="button"
         onClick={() => dispatch({ type: "OPEN_MODAL", dimmer: "blurring" })}
@@ -139,7 +135,7 @@ export default function Customers() {
         Add New Customer
       </Button>
       <Button
-      floated="left"
+        floated="left"
         className="button"
         color="blue"
         as={NavLink}
@@ -187,7 +183,7 @@ export default function Customers() {
                   )}
                   <h3>Last Name</h3>
                   <Input
-                  name="lastName"
+                    name="lastName"
                     placeholder="Example"
                     value={values.lastName}
                     onChange={handleChange}
@@ -272,11 +268,24 @@ export default function Customers() {
               <Table.Cell>{customer.birthDate}</Table.Cell>
               <Table.Cell>{customer.creditScore}</Table.Cell>
               <Table.Cell>
-                <Button color="green" onClick={() => applyForCredit(customer.customerId, customer.monthlyIncome, customer.creditScore)}>
+                <Button
+                  color="green"
+                  onClick={() =>
+                    applyForCredit(
+                      customer.customerId,
+                      customer.monthlyIncome,
+                      customer.creditScore
+                    )
+                  }
+                >
                   <Icon loading name="spinner" />
                   Apply For Credit
                 </Button>
-                <Button color="facebook">
+                <Button
+                  color="facebook"
+                  as={NavLink}
+                  to={`/customers/update/${customer.customerId}`}
+                >
                   <Icon name="refresh" />
                   Update
                 </Button>
