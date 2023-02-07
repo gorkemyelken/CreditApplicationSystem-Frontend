@@ -1,70 +1,68 @@
-# Getting Started with Create React App
+<h1 align="center">DefineX Java Spring Practicum Final Case - Frontend</h1>
+<p>Writing a restful application for a Credit Application System, which will take the credit application requests and return the credit result to the customer according to the relevant criteria, using the Spring Boot framework and optionally writing the frontend.</p>
+<p>Identity number, name-surname, monthly income, telephone information and date of birth information are taken with the form and the user is shown the credit result and credit limit.</p>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### 💻 Built with
+---
 
-## Available Scripts
+Technologies used in the project:
 
-In the project directory, you can run:
+*   React
+*   React Router 
+*   ReactDOM
+*   React Axios
+*   Semantic UI React
+*   Formik
+*   Yup
+*   Toastify
 
-### `npm start`
+### ⚛️ [Components](https://github.com/gorkemyelken/DefineXJavaSpringPracticumFinalCase-Frontend/tree/master/src/components)
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+*   [Customer](https://github.com/gorkemyelken/DefineXJavaSpringPracticumFinalCase-Frontend/tree/master/src/components/Customer)
+*   [Credit Application](https://github.com/gorkemyelken/DefineXJavaSpringPracticumFinalCase-Frontend/tree/master/src/components/Credit%20Application)
+*   [Home](https://github.com/gorkemyelken/DefineXJavaSpringPracticumFinalCase-Frontend/tree/master/src/components/Home)
+*   [NavBar](https://github.com/gorkemyelken/DefineXJavaSpringPracticumFinalCase-Frontend/tree/master/src/components/NavBar)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+### 🛠️ [Services](https://github.com/gorkemyelken/DefineXJavaSpringPracticumFinalCase-Frontend/tree/master/src/services)
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+*   Customer Service
+    * getCustomers
+    * add(values)
+    * delete(customerId)
+    * getCustomerByIdentityNumber(identityNumber)
+    * getCustomer(customerId)
+    * update(id, values)
+      
+*   Credit Application Service
+    * getCreditApplications
+    * find(identityNumber, birthDate)
+    * add(customerId, monthlyIncome, creditScore)
 
-### `npm run build`
+### 📷 Screenshots
+---
+* Home
+![Home](https://user-images.githubusercontent.com/60850092/217264601-a72b5f1d-ec62-48df-9c9b-30e79ba1915f.png)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* Customers
+![Customers](https://user-images.githubusercontent.com/60850092/217264670-78942bd4-ce18-4c6f-b823-11fbf23da903.png)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+* Add New Customer
+![Add New Customer](https://user-images.githubusercontent.com/60850092/217264769-bb4dc32f-099c-4513-bf51-fad25e5f497e.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+* Searc Customer
+![Search Customer](https://user-images.githubusercontent.com/60850092/217264807-400adbb9-962c-4bfc-8d2e-66f6565f2145.png)
 
-### `npm run eject`
+* Credit Applications
+![Credit Applications](https://user-images.githubusercontent.com/60850092/217264842-e58fd13b-d4ae-46ff-b4d6-1d9522d89c2b.png)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+* Search Credit Application
+![Search Credit Application](https://user-images.githubusercontent.com/60850092/217264869-38b41551-6245-469b-875d-8272903f529f.png)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Contact
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- [Github](https://www.github.com/gorkemyelken)
+- [Mail](mailto:gorkemyelken@gmail.com)
