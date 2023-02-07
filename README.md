@@ -52,8 +52,14 @@ Technologies used in the project:
 * Add New Customer
 ![Add New Customer](https://user-images.githubusercontent.com/60850092/217264769-bb4dc32f-099c-4513-bf51-fad25e5f497e.png)
 
-* Searc Customer
+* Search Customer
 ![Search Customer](https://user-images.githubusercontent.com/60850092/217264807-400adbb9-962c-4bfc-8d2e-66f6565f2145.png)
+
+* Apply For Credit
+![Apply For Credit](https://user-images.githubusercontent.com/60850092/217332099-488e9a67-b8c9-41d8-9917-af717f859a46.png)
+
+* Credit Application Result
+![Credit Application Result](https://user-images.githubusercontent.com/60850092/217332164-adeb9704-596b-4c98-891d-f41674693d3c.png)
 
 * Credit Applications
 ![Credit Applications](https://user-images.githubusercontent.com/60850092/217264842-e58fd13b-d4ae-46ff-b4d6-1d9522d89c2b.png)
