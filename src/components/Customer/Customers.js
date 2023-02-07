@@ -42,15 +42,18 @@ export default function Customers() {
     });
 
   const notifyAppliedCredit = () =>
-    toast.success("Applied for credit.", {
-      position: "top-center",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
+    toast.success(
+      "Applied for credit. A notification SMS has been sent to the phone number.",
+      {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      }
+    );
 
   const notifyCustomerDeleted = () =>
     toast.success("Customer successfully deleted!", {

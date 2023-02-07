@@ -1,15 +1,6 @@
 import React, { useEffect, useState } from "react";
-import {
-  Icon,
-  Label,
-  Form,
-  Input,
-  Modal,
-  Button,
-  Table,
-} from "semantic-ui-react";
+import { Icon, Button, Table } from "semantic-ui-react";
 import { NavLink } from "react-router-dom";
-import { useFormik } from "formik";
 import CreditApplicationService from "../../services/CreditApplicationService";
 import "./CreditApplications.css";
 
@@ -27,7 +18,7 @@ export default function CreditApplications() {
   return (
     <div>
       <Button
-      floated="left"
+        floated="left"
         className="button"
         color="blue"
         as={NavLink}

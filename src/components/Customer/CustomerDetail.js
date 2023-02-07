@@ -1,11 +1,8 @@
-import { validateYupSchema } from "formik";
-import React, { useEffect, useState } from "react";
-import { Grid, Form, Icon, Modal, Button, Table } from "semantic-ui-react";
+import React, { useState } from "react";
+import { Form, Button, Table } from "semantic-ui-react";
 import { useFormik } from "formik";
-import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import CustomerService from "../../services/CustomerService";
-import CreditApplicationService from "../../services/CreditApplicationService";
 
 export default function CustomerDetail() {
   let customerService = new CustomerService();

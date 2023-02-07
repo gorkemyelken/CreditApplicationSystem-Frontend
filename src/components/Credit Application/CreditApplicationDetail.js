@@ -1,6 +1,5 @@
-import { validateYupSchema } from "formik";
-import React, { useEffect, useState } from "react";
-import { Grid, Form, Input, Modal, Button, Table } from "semantic-ui-react";
+import React, { useState } from "react";
+import { Form, Button, Table } from "semantic-ui-react";
 import { useFormik } from "formik";
 
 import CreditApplicationService from "../../services/CreditApplicationService";
@@ -27,10 +26,10 @@ export default function CreditApplicationDetail() {
   return (
     <div>
       <Form onSubmit={handleSubmit}>
-        <br/>
+        <br />
         <h3>Identity Number</h3>
         <input
-        placeholder="XXXXXXXXXXX"
+          placeholder="XXXXXXXXXXX"
           name="identityNumber"
           value={values.identityNumber}
           onChange={handleChange}
@@ -38,13 +37,13 @@ export default function CreditApplicationDetail() {
         />
         <h3>Birth Date</h3>
         <input
-        placeholder="YYYY-MM-DD"
+          placeholder="YYYY-MM-DD"
           name="birthDate"
           value={values.birthDate}
           onChange={handleChange}
           onBlur={handleBlur}
         />
-        <br/>
+        <br />
         <Button type="submit" positive>
           Submit
         </Button>

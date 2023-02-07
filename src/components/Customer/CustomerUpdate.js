@@ -1,22 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import CustomerService from "../../services/CustomerService";
-import {
-  Grid,
-  Label,
-  Form,
-  Input,
-  Modal,
-  Button,
-  Table,
-  Icon,
-} from "semantic-ui-react";
+import { Form, Input, Button } from "semantic-ui-react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useFormik } from "formik";
 
 export default function CustomerUpdate() {
-
   const notifyCustomerUpdated = () =>
     toast.success("Customer successfully updated!", {
       position: "top-center",
@@ -32,23 +22,20 @@ export default function CustomerUpdate() {
 
   const [customer, setCustomer] = useState({});
 
-
   let customerService = new CustomerService();
 
   useEffect(() => {
-    customerService
-      .getCustomer(id)
-      .then((result) => {
-        setCustomer(result.data.data);
-        formik.setValues({
-          identityNumber: result.data.data.identityNumber,
-          firstName: result.data.data.firstName,
-          lastName: result.data.data.lastName,
-          monthlyIncome: result.data.data.monthlyIncome,
-          phoneNumber: result.data.data.phoneNumber,
-          birthDate: result.data.data.birthDate,
-        });
+    customerService.getCustomer(id).then((result) => {
+      setCustomer(result.data.data);
+      formik.setValues({
+        identityNumber: result.data.data.identityNumber,
+        firstName: result.data.data.firstName,
+        lastName: result.data.data.lastName,
+        monthlyIncome: result.data.data.monthlyIncome,
+        phoneNumber: result.data.data.phoneNumber,
+        birthDate: result.data.data.birthDate,
       });
+    });
   }, []);
 
   const initialValues = {
@@ -83,7 +70,6 @@ export default function CustomerUpdate() {
         <Input
           placeholder={customer.identityNumber}
           name="identityNumber"
-          
           onChange={(event, data) => handleChange("identityNumber", data.value)}
           value={formik.values.identityNumber}
         />
@@ -91,7 +77,6 @@ export default function CustomerUpdate() {
         <Input
           placeholder={customer.firstName}
           name="firstName"
-          
           onChange={(event, data) => handleChange("firstName", data.value)}
           value={formik.values.firstName}
         />
@@ -99,7 +84,6 @@ export default function CustomerUpdate() {
         <Input
           placeholder={customer.lastName}
           name="lastName"
-          
           onChange={(event, data) => handleChange("lastName", data.value)}
           value={formik.values.lastName}
         />
@@ -107,7 +91,6 @@ export default function CustomerUpdate() {
         <Input
           placeholder={customer.monthlyIncome}
           name="monthlyIncome"
-          
           onChange={(event, data) => handleChange("monthlyIncome", data.value)}
           value={formik.values.monthlyIncome}
         />
@@ -115,7 +98,6 @@ export default function CustomerUpdate() {
         <Input
           placeholder={customer.phoneNumber}
           name="phoneNumber"
-          
           onChange={(event, data) => handleChange("phoneNumber", data.value)}
           value={formik.values.phoneNumber}
         />
@@ -123,7 +105,6 @@ export default function CustomerUpdate() {
         <Input
           placeholder={customer.birthDate}
           name="birthDate"
-          
           onChange={(event, data) => handleChange("birthDate", data.value)}
           value={formik.values.birthDate}
         />
@@ -146,5 +127,3 @@ export default function CustomerUpdate() {
     </div>
   );
 }
-
-

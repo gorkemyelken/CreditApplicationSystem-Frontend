@@ -1,27 +1,27 @@
 table {
-    font-family: montserrat, sans-serif;
-    text-align: center !important;
+  font-family: montserrat, sans-serif;
+  text-align: center !important;
 }
 
-th{
-    font-size: 20px;
+th {
+  font-size: 20px;
 }
 
-td{
-    font-size: 18px;
+td {
+  font-size: 18px;
 }
 
-.title{
-    margin-top: 50px !important;
-    font-size: 30px !important;
+.title {
+  margin-top: 50px !important;
+  font-size: 30px !important;
 }
 
 .button {
-    margin: 10px!important;
-    font-family: montserrat, sans-serif !important;
-  }
+  margin: 10px !important;
+  font-family: montserrat, sans-serif !important;
+}
 
-  input {
-    width: fit-content !important;
-    text-align: center;
-  }
+input {
+  width: fit-content !important;
+  text-align: center;
+}
