@@ -25,3 +25,13 @@ input {
   width: fit-content !important;
   text-align: center;
 }
+
+.approved {
+  color: green;
+  text-align: center;
+}
+
+.rejected {
+  color: red;
+  text-align: center;
+}

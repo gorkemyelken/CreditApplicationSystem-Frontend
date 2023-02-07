@@ -8,6 +8,7 @@ import CreditApplications from "./components/Credit Application/CreditApplicatio
 import CreditApplicationDetail from "./components/Credit Application/CreditApplicationDetail";
 import CustomerDetail from "./components/Customer/CustomerDetail";
 import CustomerUpdate from "./components/Customer/CustomerUpdate";
+import ApplyForCredit from "./components/Credit Application/ApplyForCredit";
 
 function App() {
   return (
@@ -36,6 +37,11 @@ function App() {
             exact
             path="/creditapplications/search"
             element={<CreditApplicationDetail />}
+          ></Route>
+          <Route
+            exact
+            path="/customers/applyforcredit/:id"
+            element={<ApplyForCredit />}
           ></Route>
         </Routes>
       </BrowserRouter>

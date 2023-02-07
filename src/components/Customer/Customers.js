@@ -41,20 +41,6 @@ export default function Customers() {
       progress: undefined,
     });
 
-  const notifyAppliedCredit = () =>
-    toast.success(
-      "Applied for credit. A notification SMS has been sent to the phone number.",
-      {
-        position: "top-center",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      }
-    );
-
   const notifyCustomerDeleted = () =>
     toast.success("Customer successfully deleted!", {
       position: "top-center",
@@ -107,7 +93,6 @@ export default function Customers() {
   const { open, dimmer } = state;
 
   let customerService = new CustomerService();
-  let creditApplicationService = new CreditApplicationService();
   const [customers, setCustomers] = useState([]);
 
   useEffect(() => {
@@ -119,11 +104,6 @@ export default function Customers() {
   const handleDelete = (customerId) => {
     customerService.delete(customerId);
     notifyCustomerDeleted();
-  };
-
-  const applyForCredit = (customerId, monthlyIncome, creditScore) => {
-    creditApplicationService.add(customerId, monthlyIncome, creditScore);
-    notifyAppliedCredit();
   };
 
   return (
@@ -273,13 +253,8 @@ export default function Customers() {
               <Table.Cell>
                 <Button
                   color="green"
-                  onClick={() =>
-                    applyForCredit(
-                      customer.customerId,
-                      customer.monthlyIncome,
-                      customer.creditScore
-                    )
-                  }
+                  as={NavLink}
+                  to={`/customers/applyforcredit/${customer.customerId}`}
                 >
                   <Icon loading name="spinner" />
                   Apply For Credit

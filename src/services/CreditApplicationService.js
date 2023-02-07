@@ -11,9 +11,9 @@ export default class CreditApplicationService {
     );
   }
 
-  add(customerId, monthlyIncome, creditScore) {
+  add(customerId, monthlyIncome, creditScore, deposit) {
     return axios.post(`http://localhost:8080/creditapplications`, {
       customer: { customerId, monthlyIncome, creditScore },
-    });
+    deposit});
   }
 }
