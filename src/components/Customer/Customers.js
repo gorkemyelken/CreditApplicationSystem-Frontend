@@ -16,7 +16,6 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { NavLink } from "react-router-dom";
 import "./Customers.css";
-import CreditApplicationService from "../../services/CreditApplicationService";
 
 function exampleReducer(state, action) {
   switch (action.type) {
