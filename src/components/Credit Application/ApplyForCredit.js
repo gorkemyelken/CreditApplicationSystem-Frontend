@@ -113,7 +113,6 @@ export default function ApplyForCredit() {
             ) : (
               <div className="rejected">
                 <h1>REJECTED</h1>
-                <h2>Customer Information</h2>
               </div>
             )}
           </Modal.Content>
